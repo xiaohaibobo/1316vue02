@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#app div {
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			float: left;
+			margin-left: 10px;
+		}
+
+		.red {
+			background-color: red;
+		}
+
+		.blue {
+			background-color: blue;
+		}
+
+		.green {
+			background-color: green;
+		}
+	</style>
+</head>
+
+<body>
+	<div id='app'>
+		<input type="button" :value='d' v-for='(d,i) in color' @click='choose(i)' />
+		<br />
+		<div :class='i==index?"{change}":""' v-for='(d,i) in color' @click='change'></div>
+
+	</div>
+</body>
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+	//用vue实现拾取颜色效果,点击input后再点击某个div,div的内容和背景色变成input的value
+	let vm = new Vue({
+		el: '#app',
+		data: {
+			index: 0,
+			active: '',
+			color: ['red', 'green', 'blue']
+		},
+		methods: {
+			choose(i) {
+				this.index = i
+			},
+			change() {
+				console.log(this.index)
+				 this.color[this.index]
+			}
+		}
+
+	})
+</script>
+
+</html>
